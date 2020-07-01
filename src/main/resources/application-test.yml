@@ -1,8 +1,7 @@
 server:
   port: 8098
   servlet:
-    context-path: /
-#    context-path: /cc
+    context-path: /cc
 spring:
   resources:
     static-locations: classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resources,classpath:/templates
@@ -10,12 +9,11 @@ spring:
     view:
       prefix: /
       suffix: .html
-    static-path-pattern: /**
-#    static-path-pattern: /zz/**
+    static-path-pattern: /zz/**
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://10.10.10.146:3306/mall?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/sbt?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
@@ -49,8 +47,8 @@ management:
         include: '*'
         exclude: auditevents
       base-path: /cc
-  #      path-mapping:
-  #        health: /hea
+#      path-mapping:
+#        health: /hea
   server:
     address: 127.0.0.1
     servlet:
@@ -60,10 +58,4 @@ management:
     caches:
       cache:
         time-to-live: 10s
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-#    environment: mysql
-  mapper-locations: classpath:mapper/*.xml
-#  config-location: classpath:config/mapper-config.xml
-#  type-aliases-package: com.ssm.springmvc.db.entity
+

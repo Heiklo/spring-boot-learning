@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 注意：mybatis的配置文件是有顺序的 -->
+    <!-- 读取数据源配置文件db.properties 两种方式任选一，推荐方式二-->
+    <!--方式一：绝对路径使用url  -->
+    <!--  <properties url="file:\D:\mycode\mybatis02\src\main\resources\db.properties"/> -->
+    <!--方式二：相对路径是用resource  -->
+    <properties resource="db.properties"/>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="useGeneratedKeys" value="true"/>
+    </settings>
+    <typeAliases>
+        <!-- 避免返回值类型写全限定名，可以采取取别名方式，推荐以下扫描包方式，别名为类名小写 -->
+        <package name="com.ssm.springmvc.db.entity"/>
+    </typeAliases>
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="java.math.RoundingMode"/>
+    </typeHandlers>
+    <!--可以配置多个environment，例如开发环境、测试环境......default通过id指定默认数据库环境  -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!-- 开启事务 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源类型常用pooled，带有连接池功能  -->
+            <dataSource type="pooled">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 映射器，推荐下面这种扫描包方式，xml和注解开发均实用 -->
+        <!--注意：此处若已配置映射器，在代码中就无须再绑定接口configuration.addMapper(UserDao.class), 只能选其一，推荐此方式写在配置文件 -->
+        <package name="com.ssm.springmvc.db.mapper"/>
+    </mappers>
+</configuration>
