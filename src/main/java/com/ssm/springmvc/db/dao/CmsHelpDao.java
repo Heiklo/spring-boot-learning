@@ -1,22 +1,16 @@
-package com.ssm.springmvc.db.mapper;
+package com.ssm.springmvc.db.dao;
 
 import com.ssm.springmvc.db.entity.CmsHelpCategory;
+import com.ssm.springmvc.db.mapper.CmsHelpMapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
-public interface CmsHelpCategoryMapper {
-    int deleteByPrimaryKey(Long id);
+import javax.annotation.Resource;
 
-    int insert(CmsHelpCategory record);
-
-    int insertSelective(CmsHelpCategory record);
-
-    CmsHelpCategory selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(CmsHelpCategory record);
-
-    int updateByPrimaryKey(CmsHelpCategory record);
+@Resource(name = "CmsHelpDao")
+public interface CmsHelpDao extends CmsHelpMapper {
 
     @Select("select * from cms_help_category where id=#{id}")
     @Results(id = "selectCategory",value = {

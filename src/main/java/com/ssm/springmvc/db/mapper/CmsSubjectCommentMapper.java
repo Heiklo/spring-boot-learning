@@ -1,6 +1,7 @@
 package com.ssm.springmvc.db.mapper;
 
 import com.ssm.springmvc.db.entity.CmsSubjectComment;
+import org.apache.ibatis.annotations.Mapper;
 
 public interface CmsSubjectCommentMapper {
     int deleteByPrimaryKey(Long id);

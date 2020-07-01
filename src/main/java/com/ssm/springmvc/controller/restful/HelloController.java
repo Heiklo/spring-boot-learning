@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@RestController
 @RequestMapping("/hello")
 public class HelloController {
 
@@ -20,11 +19,6 @@ public class HelloController {
     @GetMapping("cc")
     public String hello(){
         return "sucess";
-    }
-
-    @GetMapping("test1/{id}")
-    public CmsHelp get(@PathVariable("id") Long id){
-      return cmsHelpMapper.selectByPrimaryKey(id);
     }
 
 }
