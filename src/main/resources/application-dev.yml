@@ -2,7 +2,18 @@ server:
   port: 8098
   servlet:
     context-path: /
+  tomcat:
+    accept-count: 500
+    max-http-form-post-size: 5
+    threads:
+      min-spare: 50
+      max: 800
+    uri-encoding: UTF-8
+    connection-timeout: 5000ms
 #    context-path: /cc
+
+
+
 spring:
   resources:
     static-locations: classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resources,classpath:/templates
@@ -35,6 +46,29 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+      file-size-threshold: 5Mb
+      location: D://temp
+  redis:
+    client-name: redis-one
+    database: 0
+    host: 10.10.10.146
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 30
+        max-wait: 3ms
+        min-idle: 1
+        max-idle: 10
+#    redis集群配置
+#    cluster:
+#      max-redirects: 2
+#      nodes:
+#        - 10.10.10.146:6379
+#        - localhost:6379
+
 
 logging:
   level:

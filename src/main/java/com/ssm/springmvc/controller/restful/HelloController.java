@@ -13,9 +13,6 @@ import javax.annotation.Resource;
 @RequestMapping("/hello")
 public class HelloController {
 
-    @Resource
-    CmsHelpMapper cmsHelpMapper;
-
     @GetMapping("cc")
     public String hello(){
         return "sucess";
